@@ -138,9 +138,10 @@ RUN apt-get update && \
 
 # Install clangd and clang-tidy from the public LLVM PPA (nightly build / development version)
 # And also the GDB debugger from the Ubuntu repos
-#RUN wget -O - https://apt.llvm.org/llvm-snapshot.gpg.key | apt-key add - && \
-#    echo "deb http://apt.llvm.org/bionic/ llvm-toolchain-bionic main" > /etc/apt/sources.list.d/llvm.list && \
-#    apt-get update && \
+RUN wget -O - https://apt.llvm.org/llvm-snapshot.gpg.key | apt-key add - && \
+    echo "deb http://apt.llvm.org/bionic/ llvm-toolchain-bionic main" > /etc/apt/sources.list.d/llvm.list && \
+    apt-get update
+#    && \
 #    apt-get install -y \
 #                       clang-tools-$LLVM \
 #                       clangd-$LLVM \
