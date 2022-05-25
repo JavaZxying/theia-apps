@@ -140,14 +140,14 @@ RUN apt-get update && \
 # And also the GDB debugger from the Ubuntu repos
 RUN wget -O - https://apt.llvm.org/llvm-snapshot.gpg.key | apt-key add - && \
     echo "deb http://apt.llvm.org/bionic/ llvm-toolchain-bionic main" > /etc/apt/sources.list.d/llvm.list && \
-    apt-get update && \
-    apt-get install -y \
-                       clang-tools-$LLVM \
-                       clangd-$LLVM \
-                       clang-tidy-$LLVM \
-                       gcc-multilib \
-                       g++-multilib \
-                       gdb
+    apt-get update
+#    apt-get install -y \
+#                       clang-tools-$LLVM \
+#                       clangd-$LLVM \
+#                       clang-tidy-$LLVM \
+#                       gcc-multilib \
+#                       g++-multilib \
+#                       gdb
     #&& \
 #    ln -s /usr/bin/clang-$LLVM /usr/bin/clang && \
 #    ln -s /usr/bin/clang++-$LLVM /usr/bin/clang++ && \
