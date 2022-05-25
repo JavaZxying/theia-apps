@@ -118,7 +118,7 @@ yarn --cache-folder ./ycache && rm -rf ./ycache && \
 
 FROM common
 
-ARG LLVM=14.0.0
+ARG LLVM=14
 ARG CMAKE_VERSION=3.18.1
 
 RUN apt-get update && \
@@ -141,10 +141,10 @@ RUN apt-get update && \
 RUN wget -O - https://apt.llvm.org/llvm-snapshot.gpg.key | apt-key add - && \
     echo "deb http://apt.llvm.org/bionic/ llvm-toolchain-bionic main" > /etc/apt/sources.list.d/llvm.list && \
     apt-get update && \
-    apt-get install -y \
-                       clang-tools-$LLVM \
-                       clangd-$LLVM \
-                       clang-tidy-$LLVM \
+#    apt-get install -y \
+#                       clang-tools-$LLVM \
+#                       clangd-$LLVM \
+#                       clang-tidy-$LLVM \
 #                       gcc-multilib \
 #                       g++-multilib \
 #                       gdb && \
@@ -154,7 +154,6 @@ RUN wget -O - https://apt.llvm.org/llvm-snapshot.gpg.key | apt-key add - && \
 #    ln -s /usr/bin/clang-cpp-$LLVM /usr/bin/clang-cpp && \
 #    ln -s /usr/bin/clang-tidy-$LLVM /usr/bin/clang-tidy && \
 #    ln -s /usr/bin/clangd-$LLVM /usr/bin/clangd
-
 
 # Install latest stable CMake
 RUN wget "https://github.com/Kitware/CMake/releases/download/v$CMAKE_VERSION/cmake-$CMAKE_VERSION-Linux-x86_64.sh" && \
