@@ -140,28 +140,25 @@ RUN apt-get update && \
 # And also the GDB debugger from the Ubuntu repos
 
 RUN wget -O - https://apt.llvm.org/llvm-snapshot.gpg.key | apt-key add - && \
-    echo "deb http://apt.llvm.org/bionic/ llvm-toolchain-bionic main \
-          deb-src http://apt.llvm.org/bionic/ llvm-toolchain-bionic main \
-          deb http://apt.llvm.org/bionic/ llvm-toolchain-bionic-13 main \
-          deb-src http://apt.llvm .org/bionic/llvm-toolchain-bionic-13 main \
-          deb http://apt.llvm.org/bionic/ llvm-toolchain-bionic-14 main \
-          deb-src http://apt.llvm.org/bionic / llvm-toolchain-bionic-14 main" > /etc/apt/sources.list.d/llvm.list && \
+    echo "deb http://apt.llvm.org/bionic/ llvm-toolchain-bionic main  \
+          deb-src http://apt.llvm.org/bionic/ llvm-toolchain-bionic main" > /etc/apt/sources.list.d/llvm.list && \
     apt-get update && \
-    apt-get install  \
-                    clang-14  \
-                    clang-tools-14  \
-                    clang-14-doc  \
-                    libclang-common-14-dev  \
-                    libclang-14-dev  \
-                    libclang1-14  \
-                    clang-format-14  \
-                    python3-clang-14  \
-                    clangd-14 \
-                    clang-tidy-14
-#    apt-get install -y \
-#                       clang-tools-$LLVM \
-#                       clangd-$LLVM \
-#                       clang-tidy-$LLVM \
+#    apt-get install  \
+#                    clang-14  \
+#                    clang-tools-14  \
+#                    clang-14-doc  \
+#                    libclang-common-14-dev  \
+#                    libclang-14-dev  \
+#                    libclang1-14  \
+#                    clang-format-14  \
+#                    python3-clang-14  \
+#                    clangd-14 \
+#                    clang-tidy-14
+    apt-get install -y \
+                       clang-$LLVM  \
+                       clang-tools-$LLVM \
+                       clangd-$LLVM \
+                       clang-tidy-$LLVM \
 #                       gcc-multilib \
 #                       g++-multilib \
 #                       gdb && \
@@ -171,12 +168,7 @@ RUN wget -O - https://apt.llvm.org/llvm-snapshot.gpg.key | apt-key add - && \
 #    ln -s /usr/bin/clang-cpp-$LLVM /usr/bin/clang-cpp && \
 #    ln -s /usr/bin/clang-tidy-$LLVM /usr/bin/clang-tidy && \
 #    ln -s /usr/bin/clangd-$LLVM /usr/bin/clangd
-#RUN echo "deb http://apt.llvm.org/bionic/ llvm-toolchain-bionic main  \
-#    deb-src http://apt.llvm.org/bionic/ llvm-toolchain-bionic main  \
-#    deb http://apt.llvm.org/bionic/ llvm-toolchain-bionic-13 main \
-#   deb-src http://apt.llvm.org/bionic/ llvm-toolchain-bionic-13 main \
-#    deb http://apt.llvm.org/bionic/ llvm-toolchain-bionic-14 main \
-#   deb-src http://apt.llvm.org/bionic/ llvm-toolchain-bionic-14 main" > /etc/apt/sources.list.d/llvm.list
+
 
 
 
