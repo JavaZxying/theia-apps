@@ -166,7 +166,8 @@ RUN wget "https://github.com/Kitware/CMake/releases/download/v$CMAKE_VERSION/cma
     rm cmake-$CMAKE_VERSION-Linux-x86_64.sh
 
 RUN chmod g+rw /home && \
-    mkdir -p /home/project && \
+    mkdir -p /home/project
+#    && \
 #    chown -R theia:theia /home/theia && \
 #    chown -R theia:theia /home/project;
 
