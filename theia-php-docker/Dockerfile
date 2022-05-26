@@ -38,8 +38,8 @@ ENV HOME=/home/theia \
     SHELL=/bin/bash \
     USE_LOCAL_GIT=true
 WORKDIR /home/theia
-COPY --from=0 --chown=theia:theia /home/theia /home/theia
-COPY --chown=theia:theia ./settings.json /home/theia/.theia/settings.json
+COPY --from=0 --chown=neuedu:neuedu /home/theia /home/theia
+COPY --chown=neuedu:neuedu ./settings.json /home/theia/.theia/settings.json
 EXPOSE 3000
 USER neuedu
 ENTRYPOINT [ "node", "/home/theia/src-gen/backend/main.js", "/home/project", "--hostname=0.0.0.0" ]
