@@ -145,7 +145,7 @@ RUN wget -O - https://apt.llvm.org/llvm-snapshot.gpg.key | apt-key add - && \
           deb http://apt.llvm.org/bionic/ llvm-toolchain-bionic-13 main \
           deb-src http://apt.llvm .org/bionic/llvm-toolchain-bionic-13 main \
           deb http://apt.llvm.org/bionic/ llvm-toolchain-bionic-14 main \
-          deb-src http://apt.llvm.org/bionic / llvm-toolchain-bionic-14" > /etc/apt/sources.list.d/llvm.list && \
+          deb-src http://apt.llvm.org/bionic / llvm-toolchain-bionic-14 main" > /etc/apt/sources.list.d/llvm.list && \
     apt-get update && \
     apt-get install  \
                     clang-14  \
