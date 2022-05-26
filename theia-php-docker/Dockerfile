@@ -18,12 +18,12 @@ RUN yarn --pure-lockfile && \
 
 FROM node:${NODE_VERSION}-alpine
 # See : https://github.com/theia-ide/theia-apps/issues/34
-RUN addgroup neuedu && \
-    adduser -G neuedu -s /bin/sh -D neuedu;
+RUN addgroup theia && \
+    adduser -G theia -s /bin/sh -D theia;
 RUN chmod g+rw /home && \
     mkdir -p /home/project && \
-    chown -R neuedu:neuedu /home/theia && \
-    chown -R neuedu:neuedu /home/project;
+    chown -R theia:theia /home/theia && \
+    chown -R theia:theia /home/project;
 RUN apk add --no-cache git openssh bash -dev libsecret
 RUN apk add --no-cache curl php php-cli php-mbstring unzip php-openssl php-phar php-json php-tokenizer php-ctype php7-pecl-yaml php7-pecl-xdebug
 RUN sed -i 's/;zend_extension=xdebug.so/zend_extension=xdebug.so/g' /etc/php7/conf.d/xdebug.ini
@@ -38,8 +38,8 @@ ENV HOME=/home/theia \
     SHELL=/bin/bash \
     USE_LOCAL_GIT=true
 WORKDIR /home/theia
-COPY --from=0 --chown=neuedu:neuedu /home/theia /home/theia
-COPY --chown=neuedu:neuedu ./settings.json /home/theia/.theia/settings.json
+COPY --from=0 --chown=theia:theia /home/theia /home/theia
+COPY --chown=theia:theia ./settings.json /home/theia/.theia/settings.json
 EXPOSE 3000
-USER neuedu
+USER theia
 ENTRYPOINT [ "node", "/home/theia/src-gen/backend/main.js", "/home/project", "--hostname=0.0.0.0" ]
