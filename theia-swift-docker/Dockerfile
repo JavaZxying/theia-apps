@@ -1,10 +1,10 @@
 ARG NODE_VERSION=12.18.3
 FROM node:$NODE_VERSION as extension-builder
-RUN npm install -g vsce
+RUN sudo npm install -g vsce
 RUN git clone --depth 1 https://github.com/apple/sourcekit-lsp
 WORKDIR /sourcekit-lsp/Editors/vscode
-RUN npm install
-RUN npm run vscode:prepublish
+RUN sudo npm install
+RUN sudo npm run vscode:prepublish
 RUN vsce package -o ./sourcekit-lsp.vsix
 
 
