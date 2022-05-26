@@ -154,6 +154,35 @@ RUN apt-get update && \
 #    ln -s /usr/bin/clang-cpp-$LLVM /usr/bin/clang-cpp && \
 #    ln -s /usr/bin/clang-tidy-$LLVM /usr/bin/clang-tidy && \
 #    ln -s /usr/bin/clangd-$LLVM /usr/bin/clangd
+RUN echo "deb http://apt.llvm.org/bionic/ llvm-toolchain-bionic main  \
+    deb-src http://apt.llvm.org/bionic/ llvm-toolchain-bionic main  \
+    deb http://apt.llvm.org/bionic/ llvm-toolchain-bionic-13 main \
+   deb-src http://apt.llvm.org/bionic/ llvm-toolchain-bionic-13 main \
+    deb http://apt.llvm.org/bionic/ llvm-toolchain-bionic-14 main \
+   deb-src http://apt.llvm.org/bionic/ llvm-toolchain-bionic-14 main" > /etc/apt/sources.list.d/llvm.list
+
+RUN apt-get update && \
+    apt-get install clang-format  \
+    clang-tidy  \
+    clang-tools \
+    clang \
+    clangd \
+    libc++-dev  \
+    libc++1  \
+    libc++abi-dev  \
+    libc++abi1 \
+    libclang-dev \
+    libclang1  \
+    liblldb-dev  \
+    libllvm-ocaml-dev \
+    libomp-dev  \
+    libomp5  \
+    lld  \
+    lldb  \
+    llvm-dev \
+    llvm-runtime  \
+    llvm  \
+    python3-clang
 
 # Install latest stable CMake
 RUN wget "https://github.com/Kitware/CMake/releases/download/v$CMAKE_VERSION/cmake-$CMAKE_VERSION-Linux-x86_64.sh" && \
