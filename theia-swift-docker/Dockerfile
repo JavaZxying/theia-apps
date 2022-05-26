@@ -1,4 +1,4 @@
-ARG NODE_VERSION=12
+ARG NODE_VERSION=12.18.3
 FROM node:$NODE_VERSION as extension-builder
 RUN npm install -g vsce
 RUN git clone --depth 1 https://github.com/apple/sourcekit-lsp
