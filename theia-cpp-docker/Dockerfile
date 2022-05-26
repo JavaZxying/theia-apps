@@ -138,9 +138,22 @@ RUN apt-get update && \
 
 # Install clangd and clang-tidy from the public LLVM PPA (nightly build / development version)
 # And also the GDB debugger from the Ubuntu repos
-#RUN wget -O - https://apt.llvm.org/llvm-snapshot.gpg.key | apt-key add - && \
-#    echo "deb http://apt.llvm.org/bionic/ llvm-toolchain-bionic main" > /etc/apt/sources.list.d/llvm.list && \
-#    apt-get update
+
+RUN wget -O - https://apt.llvm.org/llvm-snapshot.gpg.key | apt-key add - && \
+    echo "deb http://apt.llvm.org/bionic/ llvm-toolchain-bionic-14 main  \
+    deb-src http://apt.llvm.org/bionic / llvm-toolchain-bionic-14" > /etc/apt/sources.list.d/llvm.list && \
+    apt-get update && \
+    apt-get install  \
+    clang-14  \
+    clang-tools-14  \
+    clang-14-doc  \
+    libclang-common-14-dev  \
+    libclang-14-dev  \
+    libclang1-14  \
+    clang-format-14  \
+    python3-clang-14  \
+    clangd-14 \
+    clang-tidy-14
 #    apt-get install -y \
 #                       clang-tools-$LLVM \
 #                       clangd-$LLVM \
@@ -154,35 +167,14 @@ RUN apt-get update && \
 #    ln -s /usr/bin/clang-cpp-$LLVM /usr/bin/clang-cpp && \
 #    ln -s /usr/bin/clang-tidy-$LLVM /usr/bin/clang-tidy && \
 #    ln -s /usr/bin/clangd-$LLVM /usr/bin/clangd
-RUN echo "deb http://apt.llvm.org/bionic/ llvm-toolchain-bionic main  \
-    deb-src http://apt.llvm.org/bionic/ llvm-toolchain-bionic main  \
-    deb http://apt.llvm.org/bionic/ llvm-toolchain-bionic-13 main \
-   deb-src http://apt.llvm.org/bionic/ llvm-toolchain-bionic-13 main \
-    deb http://apt.llvm.org/bionic/ llvm-toolchain-bionic-14 main \
-   deb-src http://apt.llvm.org/bionic/ llvm-toolchain-bionic-14 main" > /etc/apt/sources.list.d/llvm.list
+#RUN echo "deb http://apt.llvm.org/bionic/ llvm-toolchain-bionic main  \
+#    deb-src http://apt.llvm.org/bionic/ llvm-toolchain-bionic main  \
+#    deb http://apt.llvm.org/bionic/ llvm-toolchain-bionic-13 main \
+#   deb-src http://apt.llvm.org/bionic/ llvm-toolchain-bionic-13 main \
+#    deb http://apt.llvm.org/bionic/ llvm-toolchain-bionic-14 main \
+#   deb-src http://apt.llvm.org/bionic/ llvm-toolchain-bionic-14 main" > /etc/apt/sources.list.d/llvm.list
 
-RUN apt-get update && \
-    apt-get install clang-format  \
-    clang-tidy  \
-    clang-tools \
-    clang \
-    clangd \
-    libc++-dev  \
-    libc++1  \
-    libc++abi-dev  \
-    libc++abi1 \
-    libclang-dev \
-    libclang1  \
-    liblldb-dev  \
-    libllvm-ocaml-dev \
-    libomp-dev  \
-    libomp5  \
-    lld  \
-    lldb  \
-    llvm-dev \
-    llvm-runtime  \
-    llvm  \
-    python3-clang
+
 
 # Install latest stable CMake
 RUN wget "https://github.com/Kitware/CMake/releases/download/v$CMAKE_VERSION/cmake-$CMAKE_VERSION-Linux-x86_64.sh" && \
