@@ -138,9 +138,9 @@ RUN apt-get update && \
 
 # Install clangd and clang-tidy from the public LLVM PPA (nightly build / development version)
 # And also the GDB debugger from the Ubuntu repos
-RUN wget -O - https://apt.llvm.org/llvm-snapshot.gpg.key | apt-key add - && \
-    echo "deb http://apt.llvm.org/bionic/ llvm-toolchain-bionic main" > /etc/apt/sources.list.d/llvm.list && \
-    apt-get update
+#RUN wget -O - https://apt.llvm.org/llvm-snapshot.gpg.key | apt-key add - && \
+#    echo "deb http://apt.llvm.org/bionic/ llvm-toolchain-bionic main" > /etc/apt/sources.list.d/llvm.list && \
+#    apt-get update
 #    apt-get install -y \
 #                       clang-tools-$LLVM \
 #                       clangd-$LLVM \
@@ -156,15 +156,15 @@ RUN wget -O - https://apt.llvm.org/llvm-snapshot.gpg.key | apt-key add - && \
 #    ln -s /usr/bin/clangd-$LLVM /usr/bin/clangd
 
 # Install latest stable CMake
-#RUN wget "https://github.com/Kitware/CMake/releases/download/v$CMAKE_VERSION/cmake-$CMAKE_VERSION-Linux-x86_64.sh" && \
-#    chmod a+x cmake-$CMAKE_VERSION-Linux-x86_64.sh && \
-#    ./cmake-$CMAKE_VERSION-Linux-x86_64.sh --prefix=/usr/ --skip-license && \
-#    rm cmake-$CMAKE_VERSION-Linux-x86_64.sh
-#
-#RUN chmod g+rw /home && \
-#    mkdir -p /home/project && \
-#    chown -R theia:theia /home/theia && \
-#    chown -R theia:theia /home/project;
+RUN wget "https://github.com/Kitware/CMake/releases/download/v$CMAKE_VERSION/cmake-$CMAKE_VERSION-Linux-x86_64.sh" && \
+    chmod a+x cmake-$CMAKE_VERSION-Linux-x86_64.sh && \
+    ./cmake-$CMAKE_VERSION-Linux-x86_64.sh --prefix=/usr/ --skip-license && \
+    rm cmake-$CMAKE_VERSION-Linux-x86_64.sh
+
+RUN chmod g+rw /home && \
+    mkdir -p /home/project && \
+    chown -R theia:theia /home/theia && \
+    chown -R theia:theia /home/project;
 
 #USER theia
 EXPOSE 3000
