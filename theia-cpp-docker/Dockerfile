@@ -5,7 +5,7 @@ ARG NODE_VERSION=12.18.3
 ENV NODE_VERSION=$NODE_VERSION
 
 # User account
-RUN adduser --disabled-password --gecos '' theia
+RUN adduser --disabled-password --gecos '' neuedu
 
 # Common deps
 RUN apt-get update && \
@@ -166,12 +166,11 @@ RUN wget "https://github.com/Kitware/CMake/releases/download/v$CMAKE_VERSION/cma
     rm cmake-$CMAKE_VERSION-Linux-x86_64.sh
 
 RUN chmod g+rw /home && \
-    mkdir -p /home/project
-#    && \
-#    chown -R theia:theia /home/theia && \
-#    chown -R theia:theia /home/project;
+    mkdir -p /home/project  && \
+    chown -R theia:theia /home/theia && \
+    chown -R theia:theia /home/project;
 
-#USER theia
+USER neuedu
 EXPOSE 3000
 ENV SHELL=/bin/bash \
     THEIA_DEFAULT_PLUGINS=local-dir:/home/theia/plugins
