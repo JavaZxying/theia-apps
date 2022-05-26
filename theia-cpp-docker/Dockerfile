@@ -167,8 +167,8 @@ RUN wget "https://github.com/Kitware/CMake/releases/download/v$CMAKE_VERSION/cma
 
 RUN chmod g+rw /home && \
     mkdir -p /home/project  && \
-    chown -R theia:theia /home/theia && \
-    chown -R theia:theia /home/project;
+    chown -R neuedu:neuedu /home/theia && \
+    chown -R neuedu:neuedu /home/project;
 
 USER neuedu
 EXPOSE 3000

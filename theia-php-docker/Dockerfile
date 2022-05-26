@@ -18,12 +18,12 @@ RUN yarn --pure-lockfile && \
 
 FROM node:${NODE_VERSION}-alpine
 # See : https://github.com/theia-ide/theia-apps/issues/34
-RUN addgroup theia && \
-    adduser -G theia -s /bin/sh -D theia;
+RUN addgroup neuedu && \
+    adduser -G neuedu -s /bin/sh -D neuedu;
 RUN chmod g+rw /home && \
     mkdir -p /home/project && \
-    chown -R theia:theia /home/theia && \
-    chown -R theia:theia /home/project;
+    chown -R neuedu:neuedu /home/theia && \
+    chown -R neuedu:neuedu /home/project;
 RUN apk add --no-cache git openssh bash -dev libsecret
 RUN apk add --no-cache curl php php-cli php-mbstring unzip php-openssl php-phar php-json php-tokenizer php-ctype php7-pecl-yaml php7-pecl-xdebug
 RUN sed -i 's/;zend_extension=xdebug.so/zend_extension=xdebug.so/g' /etc/php7/conf.d/xdebug.ini
@@ -41,5 +41,5 @@ WORKDIR /home/theia
 COPY --from=0 --chown=theia:theia /home/theia /home/theia
 COPY --chown=theia:theia ./settings.json /home/theia/.theia/settings.json
 EXPOSE 3000
-USER theia
+USER neuedu
 ENTRYPOINT [ "node", "/home/theia/src-gen/backend/main.js", "/home/project", "--hostname=0.0.0.0" ]
