@@ -135,18 +135,18 @@ ENV PATH=$GOROOT/bin:$GOPATH/bin:$PATH
 
 # Install Go
 # https://go.dev/doc/install
-RUN curl -fsSL https://storage.googleapis.com/golang/go$GO_VERSION.$GOOS-$GOARCH.tar.gz | tar -C /usr/local -xzv
-
-# VS Code Go Tools https://github.com/golang/vscode-go/blob/master/docs/tools.md
-RUN go get -u -v github.com/uudashr/gopkgs/cmd/gopkgs@v2 && \
-    go get -u -v github.com/ramya-rao-a/go-outline && \
-    go get -u -v github.com/cweill/gotests/gotests && \
-    go get -u -v github.com/fatih/gomodifytags && \
-    go get -u -v github.com/josharian/impl && \
-    go get -u -v github.com/haya14busa/goplay/cmd/goplay && \
-    go get -u -v github.com/go-delve/delve/cmd/dlv && \
-    GO111MODULE=on go get -v github.com/golangci/golangci-lint/cmd/golangci-lint && \
-                   go get -u -v golang.org/x/tools/gopls@v0.7.3
+#RUN curl -fsSL https://storage.googleapis.com/golang/go1.17.3.linux-amd64.tar.gz | tar -C /usr/local -xzv
+#
+## VS Code Go Tools https://github.com/golang/vscode-go/blob/master/docs/tools.md
+#RUN go get -u -v github.com/uudashr/gopkgs/cmd/gopkgs@v2 && \
+#    go get -u -v github.com/ramya-rao-a/go-outline && \
+#    go get -u -v github.com/cweill/gotests/gotests && \
+#    go get -u -v github.com/fatih/gomodifytags && \
+#    go get -u -v github.com/josharian/impl && \
+#    go get -u -v github.com/haya14busa/goplay/cmd/goplay && \
+#    go get -u -v github.com/go-delve/delve/cmd/dlv && \
+#    GO111MODULE=on go get -v github.com/golangci/golangci-lint/cmd/golangci-lint && \
+#                   go get -u -v golang.org/x/tools/gopls@v0.7.3
 
 ENV PATH=$PATH:$GOPATH/bin
 
