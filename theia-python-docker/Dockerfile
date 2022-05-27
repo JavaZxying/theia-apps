@@ -125,7 +125,6 @@ FROM common
 
 # Java
 # RUN apt-get update && apt-get -y install openjdk-11-jdk maven gradle
-
 # Python 2-3
 RUN apt-get update \
     && apt-get install -y software-properties-common \
@@ -136,7 +135,6 @@ RUN apt-get update \
     && python -m pip install --upgrade pip --user \
     && python3.8 -m pip install --upgrade pip --user \
     && pip3 install python-language-server flake8 autopep8
-
 
 WORKDIR /home/theia
 
