@@ -87,6 +87,8 @@
         "vscode-builtin-yaml": "https://github.com/theia-ide/vscode-builtin-extensions/releases/download/v1.39.1-prel/yaml-1.39.1-prel.vsix",
         "vscode-editorconfig": "https://github.com/theia-ide/editorconfig-vscode/releases/download/v0.14.4/EditorConfig-0.14.4.vsix",
         "vscode-php-intellisense": "https://github.com/felixfbecker/vscode-php-intellisense/releases/download/v2.3.5/php-intellisense.vsix",
-        "vscode-php-debug": "https://github.com/felixfbecker/vscode-php-debug/releases/download/v1.13.0/php-debug.vsix"
+        "vscode-php-debug": "https://github.com/felixfbecker/vscode-php-debug/releases/download/v1.13.0/php-debug.vsix",
+        "vscode-language-pack-zh-hans":"https://github.com/microsoft/vscode-loc/releases/download/release%2F1.68.0/vscode-language-pack-zh-hans-v1.68.0.vsix"
+
     }
 }
