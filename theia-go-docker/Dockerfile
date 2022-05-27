@@ -135,7 +135,7 @@ ENV PATH=$GOROOT/bin:$GOPATH/bin:$PATH
 
 # Install Go
 # https://go.dev/doc/install
-#RUN curl -fsSL https://storage.googleapis.com/golang/go1.17.3.linux-amd64.tar.gz | tar -C /usr/local -xzv
+RUN curl -fsSL https://go.dev/dl/go1.18.2.linux-amd64.tar.gz | tar -C /usr/local -xzv
 #
 ## VS Code Go Tools https://github.com/golang/vscode-go/blob/master/docs/tools.md
 #RUN go get -u -v github.com/uudashr/gopkgs/cmd/gopkgs@v2 && \
@@ -147,6 +147,12 @@ ENV PATH=$GOROOT/bin:$GOPATH/bin:$PATH
 #    go get -u -v github.com/go-delve/delve/cmd/dlv && \
 #    GO111MODULE=on go get -v github.com/golangci/golangci-lint/cmd/golangci-lint && \
 #                   go get -u -v golang.org/x/tools/gopls@v0.7.3
+
+RUN go install golang.org/x/tools/cmd/goimports@latest && \
+    go install golang.org/x/tools/cmd/callgraph@latest && \
+    go install golang.org/x/tools/cmd/digraph@latest && \
+    go install golang.org/x/tools/cmd/stringer@latest && \
+    go install golang.org/x/tools/cmd/toolstash@latest
 
 ENV PATH=$PATH:$GOPATH/bin
 
